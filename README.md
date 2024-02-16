@@ -32,6 +32,18 @@ The Lambda functions were developed and deployed using **AWS SAM framework**.
 
 ![](./pic/sam.PNG)
 
+- **extract_data**: Retrieve scraped data from API in .csv file and store in S3.
+- **start_glue_workflow**: Trigger the Glue Workflow when a new data file landing in S3.
+- **start_aurora**: Start Aurora database.
+- **stop_aurora**: Stop Aurora database (to save cost).
 
+Source: https://github.com/minhdc2/AWS-Severless-for-Data-Warehousing/tree/main/lambda
 
+<h3>3. Glue (PySpark) Jobs:</h3>
 
+Developed locally using Glue Docker Image, and set up CI/CD pipeline to update code changes to AWS using CodeCommit, CodeBuild, and CodePipeline.
+
+- **clean**: Retrieve scraped data from API in .csv file and store in S3.
+- **increment**: Update new data to existing table in Aurora.
+
+Source: https://github.com/minhdc2/AWS-Severless-for-Data-Warehousing/tree/main/glue
