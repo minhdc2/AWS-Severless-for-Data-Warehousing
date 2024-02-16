@@ -1,0 +1,110 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  my_demo_lambda_function
+
+  Sample SAM Template for my_demo_lambda_function
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 900
+    MemorySize: 128
+
+Resources:
+  MyDemoFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Policies:
+      - Statement:
+        - Sid: AdministratorAccess
+          Effect: Allow
+          Action: '*'
+          Resource: '*'
+        - Sid: PutObjectToS3
+          Effect: Allow
+          Action:
+          - s3:PutObject
+          - s3:PutObjectAcl
+          Resource:
+          - arn:aws:s3:::vnstockmarket-sample-dev
+          - arn:aws:s3:::vnstockmarket-sample-dev/*
+      PackageType: Image
+    Metadata:
+      DockerTag: python3.9
+      DockerContext: ./extract_data
+      Dockerfile: Dockerfile
+
+  StartAuroraFunction:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        CodeUri: start_aurora/
+        Handler: function.lambda_handler
+        Runtime: python3.9
+        Architectures:
+          - x86_64
+        Policies:
+        - Statement:
+          - Sid: AdministratorAccess
+            Effect: Allow
+            Action: '*'
+            Resource: '*'
+
+  StopAuroraFunction:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        CodeUri: stop_aurora/
+        Handler: function.lambda_handler
+        Runtime: python3.9
+        Architectures:
+          - x86_64
+        Policies:
+        - Statement:
+          - Sid: AdministratorAccess
+            Effect: Allow
+            Action: '*'
+            Resource: '*'
+
+  StartGlueWorkflowFunction:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        CodeUri: start_glue_workflow/
+        Handler: function.lambda_handler
+        Runtime: python3.9
+        Architectures:
+          - x86_64
+        Policies:
+        - Statement:
+          - Sid: AdministratorAccess
+            Effect: Allow
+            Action: '*'
+            Resource: '*'
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  MyDemoFunction:
+    Description: "MyDemo Lambda Function ARN"
+    Value: !GetAtt MyDemoFunction.Arn
+  MyDemoFunctionIamRole:
+    Description: "Implicit IAM Role created for MyDemo function"
+    Value: !GetAtt MyDemoFunctionRole.Arn
+  StartAuroraFunction:
+    Description: "StartAuroraFunction ARN"
+    Value: !GetAtt StartAuroraFunction.Arn
+  StartAuroraFunctionIamRole:
+    Description: "Implicit IAM Role created for StartAuroraFunction"
+    Value: !GetAtt StartAuroraFunctionRole.Arn
+  StopAuroraFunction:
+    Description: "StopAuroraFunction ARN"
+    Value: !GetAtt StopAuroraFunction.Arn
+  StopAuroraFunctionIamRole:
+    Description: "Implicit IAM Role created for StopAuroraFunction"
+    Value: !GetAtt StopAuroraFunctionRole.Arn
+  StartGlueWorkflowFunction:
+    Description: "StartGlueWorkflowFunction ARN"
+    Value: !GetAtt StartGlueWorkflowFunction.Arn
+  StartGlueWorkflowFunctionIamRole:
+    Description: "Implicit IAM Role created for StartGlueWorkflowFunction"
+    Value: !GetAtt StartGlueWorkflowFunctionRole.Arn
