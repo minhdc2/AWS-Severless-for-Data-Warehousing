@@ -1,0 +1,6 @@
+pandas
+beautifulsoup4
+selenium
+Flask
+Flask-RESTful
+lxml
