@@ -23,9 +23,10 @@ The experiment involves different AWS services like IAM, ECR, ECS, Lambda, Cloud
 <h3>1. Docker Image:</h3>
 
 Build a Docker Image for an API, which use Selenium (with Chrome driver) to scrape the data from the stock website and then return result.
-Refer to: ./ecr
 
-</h3>2. Lambda Functions:</h3>
+Source: https://github.com/minhdc2/AWS-Severless-for-Data-Warehousing/tree/main/ecr
+
+<h3>2. Lambda Functions:</h3>
 
 The Lambda functions were developed and deployed using **AWS SAM framework**.
 
