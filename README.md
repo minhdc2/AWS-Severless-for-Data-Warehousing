@@ -43,7 +43,17 @@ Source: https://github.com/minhdc2/AWS-Severless-for-Data-Warehousing/tree/main/
 
 Developed locally using Glue Docker Image, and set up CI/CD pipeline to update code changes to AWS using CodeCommit, CodeBuild, and CodePipeline.
 
-- **clean**: Retrieve scraped data from API in .csv file and store in S3.
-- **increment**: Update new data to existing table in Aurora.
+- **clean.py**: Retrieve scraped data from API in .csv file and store in S3.
+- **increment.py**: Update new data to existing table in Aurora.
 
 Source: https://github.com/minhdc2/AWS-Severless-for-Data-Warehousing/tree/main/glue
+
+<h3>4. Result:</h3>
+
+**Source**:
+
+![](./pic/source.png)
+
+**Target**:
+
+![](./pic/target.png)
