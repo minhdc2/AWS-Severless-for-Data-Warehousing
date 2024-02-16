@@ -29,7 +29,8 @@ Source: https://github.com/minhdc2/AWS-Severless-for-Data-Warehousing/tree/main/
 <h3>2. Lambda Functions:</h3>
 
 The Lambda functions were developed and deployed using **AWS SAM framework**.
-![](./pic/sam.png)
+
+![](./pic/sam.PNG)
 
 
 
