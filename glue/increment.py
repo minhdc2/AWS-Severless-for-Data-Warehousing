@@ -24,12 +24,12 @@ bucket = "vnstockmarket-sample-dev"
 table_name = "stg_vnindex_historical_index"
 
 # connection parameters to Aurora
-hostname = "aurora-1-instance-1.crpjyuxywpap.ca-central-1.rds.amazonaws.com"
+hostname = "" #removed
 port = "3306"
 database_name = "mydemo"
 aurora_table = "STG_VNINDEX_HISTORICAL_INDEX"
-username = "admin"
-pwd = "Iamshining13"
+username = "" #removed
+pwd = "" #removed
 
 # connect to Aurora
 cnx = mysql.connector.connect(user=username, password=pwd,
