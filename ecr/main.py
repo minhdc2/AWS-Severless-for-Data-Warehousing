@@ -49,7 +49,7 @@ class command(Resource):
 
     def get(self):
         print("The program is running!")
-        url_path = "https://s.cafef.vn/Lich-su-giao-dich-VNINDEX-1.chn#data"
+        url_path = "" #removed url
         today = datetime.datetime.now().strftime('%d/%m/%Y')
         from_to_date_input = {
             "//input[@name='daterange']": f"{today} - {today}",
